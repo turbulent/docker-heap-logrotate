@@ -1,0 +1,9 @@
+/vol/docker-logs/*/*.log
+{
+    {{LOGROTATE_MODE}}
+    missingok
+    rotate {{LOGROTATE_ROTATE}}
+    compress
+    notifempty
+    copytruncate
+}
