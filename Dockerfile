@@ -1,6 +1,6 @@
-FROM heap-base:2.0
+FROM docker-registry.turbulent.ca:5000/heap-base:2.0.3
 
-ENV heap-logrotate 2.0
+ENV heap-logrotate 2.0.1
 
 MAINTAINER Benoit Beausejour <b@turbulent.ca>
 
