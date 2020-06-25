@@ -7,3 +7,17 @@
     notifempty
     copytruncate
 }
+
+{% if LOGROTATE_EXTRA_FILE_PATHS|length %}
+{% for file_path in LOGROTATE_EXTRA_FILE_PATHS.split(',') %}
+{{ file_path }}
+{
+    {{LOGROTATE_MODE}}
+    missingok
+    rotate {{LOGROTATE_ROTATE}}
+    compress
+    notifempty
+    copytruncate
+}
+{% endfor %}
+{% endif %}

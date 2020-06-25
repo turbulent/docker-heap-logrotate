@@ -9,11 +9,11 @@ RUN apt-get update && \
   apt-get install -y memcached && \
   rm -rf /var/lib/apt/lists/*
 
-RUN rm /etc/logrotate.d/*  && \
+RUN rm /etc/logrotate.d/* && \
   rm -f /etc/cron.daily/* && \
   rm -f /etc/cron.weekly/* && \
   rm -f /etc/cron.monthly/* && \
-  rm -f /etc/cron.d/* 
+  rm -f /etc/cron.d/*
 
 ADD run.sh /run.sh
 ADD logrotate.docker.tmpl /systpl/
@@ -23,7 +23,8 @@ ADD rsyslog-50-default.conf.tmpl /systpl/
 ADD supervisor.conf.tmpl /systpl/
 
 ENV LOGROTATE_MODE="daily" \
-  LOGROTATE_ROTATE=7
+  LOGROTATE_ROTATE=7 \
+  LOGROTATE_EXTRA_FILE_PATHS=""
 
 VOLUME ["/vol/logs", "/vol/docker-logs"]
 
